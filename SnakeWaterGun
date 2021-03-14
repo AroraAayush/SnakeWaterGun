@@ -1,0 +1,83 @@
+import random
+def func_changingtoCharacter(tc):
+    if(tc==1):
+        return "S"
+    elif(tc==2):
+        return "W"
+    elif(tc==3):
+        return "G"
+
+def func_check(user,comp) :
+    if(user=="S"):
+        if(comp=="W"):
+            return "U"
+        elif(comp=="G"):
+            return "C"
+        else:
+            return "D"
+
+    elif(user=="W"):
+        if(comp=="G"):
+            return "U"
+        elif(comp=="S"):
+            return "C"
+        else:
+            return "D"
+
+    elif(user=="G"):
+        if(comp=="S"):
+            return "U"
+        elif(comp=="W"):
+            return "C"
+        else:
+            return "D"
+
+    else:
+        print("Please enter valid Input")
+        return "A"
+print("Welcome To Snake Water Gun game")
+print("There will be total 10 rounds")
+print("Press S for Snake")
+print("Press W for Water")
+print("Press G for Gun")
+
+comppoint=0
+userpoint=0
+for i in range(1,11):
+    user=input("Enter Your Choice : ")
+    comptemp=random.randint(1,3)
+    comp=func_changingtoCharacter(comptemp)
+    print(f"You chose {user}")
+    print(f"Computer chose {comp}")
+    chk=func_check(user,comp)
+    if(chk=="U") :
+        print(f"User wins the round number {i}")
+        userpoint=userpoint+1
+    elif(chk=="C") :
+         print(f"Computer wins the round number {i}")
+         comppoint=comppoint+1
+    elif(chk=="D") :
+        print(f"Round number {i} is Draw")
+        comppoint=comppoint+1
+        userpoint=userpoint+1
+    else:
+        print(f"Round number {i} is aborted")
+    print(f"Scores after round number {i} are -")
+    print(f"User's Score = {userpoint}")
+    print(f"Computer's Score = {comppoint}")
+
+
+print("GAME OVER")
+print("Final Scores are - ")
+print(f"User's Score = {userpoint}")
+print(f"Computer's Score = {comppoint}")
+
+if(userpoint>comppoint) :
+    print("User Wins")
+elif(userpoint<comppoint) :
+    print("Computer Wins")
+else :
+    print("There is a Draw")
+
+
+
